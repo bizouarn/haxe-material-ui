@@ -17,6 +17,7 @@ class MuiTheme {
 	static var DefaultThemeCT = macro :mui.core.styles.MuiTheme.DefaultTheme;
 	#end
 
+	// Deprecated
 	public static macro function createMuiTheme(overrides:Expr):Expr {
 		var expectedType = switch (Context.getExpectedType()) {
 			case TMono(_):
@@ -29,12 +30,62 @@ class MuiTheme {
 			($overrides:$expectedType)
 		);
 	}
+
+	public static macro function createTheme(overrides:Expr):Expr {
+		var expectedType = switch (Context.getExpectedType()) {
+			case TMono(_):
+				DefaultThemeCT;
+
+			case t: TypeTools.toComplexType(t);
+		};
+
+		return macro mui.core.styles.MuiTheme.MuiThemeExtern.createTheme(
+			($overrides:$expectedType)
+		);
+	}
 }
 
 @:jsRequire('@material-ui/core/styles')
 extern class MuiThemeExtern {
 	#if !macro
+	// Deprecated
 	public static function createMuiTheme<
+		TBreakpoints:MuiBreakpoints,
+		TMixins:MuiMixins,
+		TOverrides:MuiOverrides,
+		TPaletteAction:MuiPaletteAction,
+		TPaletteCommon:MuiPaletteCommon,
+		TPaletteBackground:MuiPaletteBackground,
+		TPaletteText:MuiPaletteText,
+		TPalette:MuiPalette<
+			TPaletteAction,
+			TPaletteCommon,
+			TPaletteBackground,
+			TPaletteText
+		>,
+		TProps:MuiProps,
+		TTypography:MuiTypography,
+		TShape:MuiShape,
+		TTransitions:MuiTransitions,
+		TZIndexes:MuiZIndexes,
+		TTheme:Theme<
+			TBreakpoints,
+			TMixins,
+			TOverrides,
+			TPaletteAction,
+			TPaletteCommon,
+			TPaletteBackground,
+			TPaletteText,
+			TPalette,
+			TProps,
+			TTypography,
+			TShape,
+			TTransitions,
+			TZIndexes
+		>
+	>(overrides:TTheme):TTheme;
+
+	public static function createTheme<
 		TBreakpoints:MuiBreakpoints,
 		TMixins:MuiMixins,
 		TOverrides:MuiOverrides,

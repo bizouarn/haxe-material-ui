@@ -23,6 +23,7 @@ typedef GridProps = {
 	@:optional var direction:FlexDirection;
 	@:optional var item:Bool;
 	@:optional var justify:GridJustifyContent;
+	@:optional var justifyContent:GridJustifyContent;
 	@:optional var lg:GridsNumber;
 	@:optional var md:GridsNumber;
 	@:optional var sm:GridsNumber;
