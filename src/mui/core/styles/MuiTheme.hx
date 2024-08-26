@@ -231,6 +231,9 @@ typedef MuiPalette<
 
 	@:optional var primary:PaletteIntention;
 	@:optional var secondary:PaletteIntention;
+	@:optional var info:PaletteIntention;
+	@:optional var success:PaletteIntention;
+	@:optional var warning:PaletteIntention;
 	@:optional var error:PaletteIntention;
 
 	@:optional var action:TAction;
@@ -239,6 +242,11 @@ typedef MuiPalette<
 	@:optional var common:TCommon;
 	@:optional var background:TBackground;
 	@:optional var grey:ColorDefinition;
+	@:optional var blue:ColorDefinition;
+	@:optional var orange:ColorDefinition;
+	@:optional var green:ColorDefinition;
+	@:optional var yellow:ColorDefinition;
+	@:optional var red:ColorDefinition;
 	@:optional var text:TText;
 }
 
